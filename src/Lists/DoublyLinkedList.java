@@ -1,9 +1,11 @@
 package Lists;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 public class DoublyLinkedList<E> {
     class Node<E>{
+
         E data;
         Node previous;
         Node next;
@@ -43,25 +45,36 @@ public class DoublyLinkedList<E> {
     }
 
     public void remove(E e){
-        if(head == null)
+        if(head == null){
             return;
-        if(head.data == e)
+        }
+        else if(head.data == e && tail.data == e){
+            head = null;
+            tail = null;
+        }
+        else if(head.data == e){
             head = head.next;
-        if(tail.data == e)
+            head.previous = null;
+        }
+        else if(tail.data == e){
             tail = tail.previous;
-        for(Node x = head; x != null; x = x.next){
-            if(x.data == e){
-                x.previous.next = x.next;
-                x.next.previous = x.previous;
+            tail.next = null;
+        }
+        else{
+            Node current = head;
+            while(current != null && current.data != e){
+                current = current.next;
+            }
+            if(current != null && current.data == e){
+                current.previous.next = current.next;
+                current.next.previous = current.previous;
             }
         }
         size--;
     }
 
     public boolean isEmpty(){
-        if(head == null)
-            return true;
-        return false;
+        return head == null;
     }
 
     public int size(){
