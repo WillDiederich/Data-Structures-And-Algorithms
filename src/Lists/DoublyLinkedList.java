@@ -71,7 +71,6 @@ public class DoublyLinkedList<E> {
             }
         }
         size--;
-
     }
 
     public boolean isEmpty(){
