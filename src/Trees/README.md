@@ -33,8 +33,8 @@
 |-----------|---------|-------|
 | Space      | O(*n*)     | O(*n*) |
 | Search     | O(log *n*) | O(log *n*) |
-| Insert     | O(1) | O(log *n*) |
-| Delete     | O(1) | O(log *n*) |
+| Insert     | O(log *n*) | O(log *n*) |
+| Delete     | O(log *n*) | O(log *n*) |
 
 ## Traversal
 
