@@ -1,15 +1,13 @@
 package Trees;
 
 public class BinaryTreeNode {
-    private static class Node {
         int value;
-        Node left;
-        Node right;
+        BinaryTreeNode left;
+        BinaryTreeNode right;
 
-        Node(int value) {
-            this.value = value;
-            this.left = null;
-            this.right = null;
-        }
+    BinaryTreeNode(int value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
     }
 }
