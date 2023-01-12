@@ -5,12 +5,36 @@
 ## Types
 ### **Binary Tree:** 
 - A Binary Tree is a type of Tree where every node has at most two children.
+
 ### **Binary Search Tree:**
 - A Binary Search Tree is a type of Binary Tree where the value of every node is greater than every node in its left subtree and less than every node in its right subtree.
+
+     | Algorithm | Average | Worst |
+     |-----------|---------|-------|
+     | Space      | O(*n*)     | O(*n*) |
+     | Search     | O(log *n*) | O(*n*) |
+     | Insert     | O(log *n*) | O(*n*) |
+     | Delete     | O(log *n*) | O(*n*) |
+
 ### **AVL Tree:** 
 - An AVL Tree is a self-balancing Binary Search Tree.
+
+| Algorithm | Average | Worst |
+|-----------|---------|-------|
+| Space      | O(*n*)     | O(*n*) |
+| Search     | O(log *n*) | O(log *n*) |
+| Insert     | O(log *n*) | O(log *n*) |
+| Delete     | O(log *n*) | O(log *n*) |
+
 ### **Red-Black Tree:**
 - A Red-Black Tree is a self-balancing Binary Search Tree, where every node contains a red/black color indicator used to ensure that the tree remains balanced during insertions and deletions.
+
+| Algorithm | Average | Worst |
+|-----------|---------|-------|
+| Space      | O(*n*)     | O(*n*) |
+| Search     | O(log *n*) | O(log *n*) |
+| Insert     | O(1) | O(log *n*) |
+| Delete     | O(1) | O(log *n*) |
 
 ## Traversal
 
