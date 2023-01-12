@@ -71,34 +71,35 @@ public class BinarySearchTree {
 
     private Node remove(Node current, int value){
         if(current == null){
-            return current;
-        }
-        // The node containing the value has been found
-        else if(value == current.value){
-            // The node is a leaf node
-            if(current.left == null && current.right == null){
-                return null;
-            }
-            // The node only has a right subtree.
-            if(current.left == null){
-                return current.right;
-            }
-            // The node only has a left subtree.
-            if(current.right == null){
-                return current.left;
-            }
-            // The node has both a left and right subtree
-            Node minNode = findMin(current.right);
-            current.value = minNode.value;
-            current.right = remove(current.right, current.value);
+            return null;
         }
         // Traverse the left subtree.
-        else if(value < current.value){
+        if(value < current.value){
             current.left = remove(current.left, value);
         }
         // Traverse the right subtree.
         else if(value > current.value){
             current.right = remove(current.right, value);
+        }
+        else {
+            // Target node is a leaf node.
+            if(current.left == null && current.right == null){
+                return null;
+            }
+            // Target node only has a right subtree.
+            else if(current.left == null){
+                return current.right;
+            }
+            // Target node only has a left subtree.
+            else if(current.right == null){
+                return current.left;
+            }
+            // Target node has both a left and right subtree.
+            else{
+                Node minNode = findMin(current.right);
+                current.value = minNode.value;
+                current.right = remove(current.right, current.value);
+            }
         }
         return current;
     }
