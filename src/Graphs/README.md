@@ -11,9 +11,16 @@
 #### Vertex
 #### Edge
 #### Bridge
+   - A Bridge is an edge which, when removed, will make the graph disconnected.
+   - Bridges can be found by using Tarjan's algorithm for finding articulation points and bridges. 
 #### Articulation Point
-#### Strongly Connected Component
-
+   - An Articulation Point is a vertex which, when removed, will make the graph disconnected.
+   - Articulation Points can be found by using Tarjan's algorithm for finding articulation points and bridges. 
+#### Strongly Connected Graph/Component
+   - A graph is considered strongly connected if every vertex is r eachable from every other vertex.
+   - A strongly connected component is a portion of a graph where every vertex is reachable from every other vertex.
+   - Strongly connected components can be found by using Tarjan's algorithm for finding strongly connected components. 
+   
 ## Graph Algorithms
 
 #### General Breadth-First Search
