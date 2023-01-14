@@ -7,6 +7,13 @@
 #### Acyclic
 #### Cyclic
 
+## Definitions
+#### Vertex
+#### Edge
+#### Bridge
+#### Articulation Point
+#### Strongly Connected Component
+
 ## Graph Algorithms
 
 #### General Breadth-First Search
@@ -16,7 +23,11 @@
 #### Strongly Connected Components - Tarjan's Algorithm
 
 #### Minimum Spanning Tree - Kruskal's Algorithm 
+   - Kruskal's Minimum Spanning Tree algorithm builds a minimum spanning tree by sorting the edges by weight, and then by selecting the minimum cost edges that do not form a cycle.
 #### Minimum Spanning Tree - Prim's Algorithm
+   - Prim's Minimum Spanning Tree algorithm builds a minimum spanning tree by starting from a random verted, and then by selecting the minimum cost vertex connected to that vertex.
+   - Can handle negative weight.
+   - Only works on undirected graphs.
 
 #### All-Pairs Shortest Path - Floyd-Warshall Algorithm
    - Floyd-Warshall's All-Pairs Shortest Path Algorithm finds the shortest path between every possible vertex pair in a graph.
