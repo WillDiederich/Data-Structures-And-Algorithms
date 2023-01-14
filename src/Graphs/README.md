@@ -26,3 +26,6 @@
 
 #### Topological Sort - Kahn's Algorithm
 #### Topolobical Sort - General BFS
+
+#### Find Bridges - Tarjan's Algorithm
+#### Find Articulation Points - Tarjan's Algorithm
