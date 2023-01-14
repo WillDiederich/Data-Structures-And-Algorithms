@@ -2,8 +2,8 @@ package Graphs;
 
 import java.util.*;
 
-public class TopologicalSort_BFS {
-    public List<Integer> TopologicalSort(int[][] graph, int v){
+public class TopologicalSort_Kahn {
+    public List<Integer> topologicalSort(int[][] graph, int v){
         // Build an adjacency list.
         List<List<Integer>> adjacencyList = new ArrayList<>();
         int[] inDegree = new int[v];
