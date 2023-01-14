@@ -4,42 +4,45 @@ import java.util.*;
 
 public class SingleSourceShortestPath_Dijkstra {
     public static int[] dijkstra(int[][] graph, int source, int v){
+        // Create an adjacency list.
         Map<Integer, Map<Integer, Integer>> adjacencyList = new HashMap<>();
         for(int[] edge : graph){
             adjacencyList.putIfAbsent(edge[0], new HashMap<>());
             adjacencyList.get(edge[0]).put(edge[1], edge[2]);
         }
 
-        PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> (a[1] - b[1]));
-        boolean[] visited = new boolean[v];
+        // Create an integer array to hold each distance.
         int[] distance = new int[v];
         for(int x = 0; x < v; x++){
-            visited[x] = false;
             distance[x] = Integer.MAX_VALUE;
         }
-
         distance[source] = 0;
+
+        // Create a priority queue, sort the distances from smallest to largest.
+        PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> (a[1] - b[1]));
         priorityQueue.add(new int[]{source, 0});
 
+        // Create a boolean array to ensure we don't reprocess vertices we have already visited.
+        boolean[] visited = new boolean[v];
         while(!priorityQueue.isEmpty()){
+            // Remove the first vertex in the queue.
             int[] current = priorityQueue.remove();
             int currentVertex = current[0];
-            int currentDistance = current[1];
 
-            if(visited[currentVertex]){
-                continue;
-            }
-
+            // Set the vertices visited flag to true.
             visited[currentVertex] = true;
+            // Calculate the distance for each of the vertices neighbors.
             for(int next : adjacencyList.get(currentVertex).keySet()){
                 int tempDistance = distance[currentVertex] + adjacencyList.get(currentVertex).get(next);
                 if(tempDistance < distance[next]){
                     distance[next] = tempDistance;
                 }
-                priorityQueue.add(new int[]{next, adjacencyList.get(currentVertex).get(next)});
+                // Add the neighbor to the queue if it hasn't been processed.
+                if(!visited[next]) {
+                    priorityQueue.add(new int[]{next, adjacencyList.get(currentVertex).get(next)});
+                }
             }
         }
-
         return distance;
     }
 //    public static void dijkstra(int[][] graph, int source, int v){
