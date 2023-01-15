@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class TopologicalSort_DFS {
-    public static void topologicalSort(int[][] graph, int v) {
+    public void topologicalSort(int[][] graph, int v) {
         // Build Graph
         List<List<Integer>> adjacencyList = new ArrayList<>();
         for (int x = 0; x < v; x++) {
@@ -27,7 +27,7 @@ public class TopologicalSort_DFS {
         }
     }
 
-    public static void visit(List<List<Integer>> adjacencyList, Stack<Integer> result, boolean[] visited, boolean[] temp, int currentNode){
+    public void visit(List<List<Integer>> adjacencyList, Stack<Integer> result, boolean[] visited, boolean[] temp, int currentNode){
         if(visited[currentNode]){
             return;
         }
@@ -42,10 +42,5 @@ public class TopologicalSort_DFS {
         temp[currentNode] = false;
         visited[currentNode] = true;
         result.push(currentNode);
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = new int[][]{{5,2},{5,0},{4,0},{4,1},{2,3},{3,1},{3,5}};
-        topologicalSort(graph, 6);
     }
 }
