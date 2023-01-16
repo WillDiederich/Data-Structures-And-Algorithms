@@ -5,22 +5,21 @@ import java.util.List;
 import java.util.Stack;
 
 public class TopologicalSort_DFS {
-    public static Stack<Integer> topologicalSort(int[][] graph, int v) {
+    public static void topologicalSort(int[][] graph, int v) {
         List<List<Integer>> adjacencyList = buildGraph(graph, v);
         boolean[] visited = new boolean[v];
         Stack<Integer> result = new Stack<>();
         for(int currentVertex = 0; currentVertex < v; currentVertex++) {
             if(!visited[currentVertex]){
                 if(dfs(adjacencyList, visited, new boolean[v], currentVertex, result)) {
-                    System.out.println("Cycle detected.");
-                    return null;
+                    System.out.println("Error: Cycle Detected - Topological Sort only works on Directed Acyclic Graphs.");
+                    return;
                 }
             }
         }
-        return result;
+        printTopologicalOrder(result);
     }
 
-    // Returns true if a cycle has been detected
     public static boolean dfs(List<List<Integer>> adjacencyList, boolean[] visited, boolean[] checkCycle, int currentVertex, Stack<Integer> result) {
         if(visited[currentVertex]) {
             return false;
@@ -40,6 +39,14 @@ public class TopologicalSort_DFS {
         return false;
     }
 
+    public static void printTopologicalOrder(Stack<Integer> result){
+        System.out.print("Topological order: " + result.pop());
+        while(!result.isEmpty()){
+            System.out.print(" -> " + result.pop());
+        }
+        System.out.println();
+    }
+
     public static List<List<Integer>> buildGraph(int[][] graph, int v){
         List<List<Integer>> adjacencyList = new ArrayList<>();
         for (int x = 0; x < v; x++) {
@@ -54,7 +61,7 @@ public class TopologicalSort_DFS {
     public static void main(String[] args) {
         int[][] graphWithCycle = new int[][]{ {5, 2}, {5, 0}, {4,0}, {4, 1}, {2, 3}, {3, 1}, {2, 5} };
         int[][] graphWithoutCycle = new int[][]{ {5, 2}, {5, 0}, {4,0}, {4, 1}, {2, 3}, {3, 1} };
-        Stack<Integer> temp = topologicalSort(graphWithoutCycle, 6);
-        Stack<Integer> temp2 = topologicalSort(graphWithCycle, 6);
+        topologicalSort(graphWithoutCycle, 6);
+        topologicalSort(graphWithCycle, 6);
     }
 }
