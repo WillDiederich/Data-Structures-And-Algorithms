@@ -19,8 +19,8 @@ public class SingleSourceShortestPath_Dijkstra {
         distance[source] = 0;
 
         // Create a priority queue, sort the distances from smallest to largest.
-        PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> (a[1] - b[1]));
-        priorityQueue.add(new int[]{source, 0});
+        PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+        priorityQueue.add(new int[]{ source, 0 });
 
         // Create a boolean array to ensure we don't reprocess vertices we have already visited.
         boolean[] visited = new boolean[v];
@@ -45,40 +45,9 @@ public class SingleSourceShortestPath_Dijkstra {
         }
         return distance;
     }
-//    public static void dijkstra(int[][] graph, int source, int v){
-//        boolean[] visited = new boolean[v];
-//        int[] distance = new int[v];
-//        int[] previous = new int[v];
-//
-//        for(int x = 0; x < v; x++){
-//            distance[x] = Integer.MAX_VALUE;
-//            previous[x] = 0;
-//            visited[x] = false;
-//        }
-//
-//        distance[source] = 0;
-//        for(int x = 0; x < v - 1; x++){
-//            int minVertex = -1;
-//            int minDistance = Integer.MAX_VALUE;
-//            for(int y = 0; y < v; y++){
-//                if(!visited[y] && distance[y] <= minDistance){
-//                    minDistance = distance[y];
-//                    minVertex = y;
-//                }
-//            }
-//
-//            visited[minVertex] = true;
-//            for(int y = 0; y < v; y++){
-//                if(!visited[y] && graph[minVertex][y] != 0 && distance[minVertex] != Integer.MAX_VALUE && distance[minVertex] + graph[minVertex][y] < distance[y]) {
-//                    distance[y] = distance[minVertex] + graph[minVertex][y];
-//                    previous[y] = minVertex;
-//               }
-//            }
-//        }
-//    }
 
     public static void main(String[] args) {
-        int graph[][] = new int[][] {
+        int[][] graph = new int[][] {
                                     {0,1,4}, {0,7,8},
                                     {1,0,4}, {1,2,8}, {1,7,11},
                                     {2,1,8}, {2,8,2}, {2,5,4}, {2,3,7},
@@ -89,8 +58,12 @@ public class SingleSourceShortestPath_Dijkstra {
                                     {7,0,8}, {7,1,11}, {7,8,7}, {7,6,1},
                                     {8,7,7}, {8,6,6},
                                     };
-        for(int x : dijkstra(graph, 0, 9)){
-            System.out.println(x);
+        int source = 0;
+        int numVertices = 9;
+
+        int[] distances = dijkstra(graph, 0, 9);
+        for(int x = 0; x < numVertices; x++){
+            System.out.println("Distance from vertex '" + source + "' to vertex '" + x + "': " + distances[x]);
         }
     }
 }
