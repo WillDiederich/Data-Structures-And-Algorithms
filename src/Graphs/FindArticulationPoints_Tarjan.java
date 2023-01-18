@@ -11,11 +11,12 @@ public class FindArticulationPoints_Tarjan {
         // Discovered contains the time that each vertex was discovered.
         int[] discovered = new int[v];
         // Low contains the lowest vertex that each vertex can reach.
-        // Good explanation: https://youtu.be/wUgWX0nc4NY?t=70
         int[] low = new int[v];
+        // -1 denotes that a node hasn't been visited.
         for(int x = 0; x < v; x++){
             discovered[x] = -1;
         }
+        // Perform dfs on all unvisited nodes.
         for(int x = 0; x < v; x++){
             if(discovered[x] == -1){
                 dfs(adjacencyList, articulationPoints, discovered, low, x, x);
