@@ -61,7 +61,7 @@ public class SingleSourceShortestPath_Dijkstra {
         int source = 0;
         int numVertices = 9;
 
-        int[] distances = dijkstra(graph, 0, 9);
+        int[] distances = dijkstra(graph, source, numVertices);
         for(int x = 0; x < numVertices; x++){
             System.out.println("Distance from vertex '" + source + "' to vertex '" + x + "': " + distances[x]);
         }
