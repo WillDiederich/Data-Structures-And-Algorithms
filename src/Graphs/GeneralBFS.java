@@ -10,11 +10,16 @@ public class GeneralBFS {
         List<List<Integer>> adjacencyList = buildGraph(graph, v);
         Queue<Integer> queue = new LinkedList<>();
         boolean[] visited = new boolean[v];
+        // Add the starting vertex to the queue
         queue.add(source);
         while(!queue.isEmpty()){
+            // Remove the head of the queue
             int current = queue.poll();
+            // Set visited to true for the current vertex
             visited[current] = true;
+            // Visit the current vertex
             System.out.println(current);
+            // Add every unvisited neighbor of the current vertex to the queue
             for(int x : adjacencyList.get(current)){
                 if(!visited[x]){
                     queue.add(x);
