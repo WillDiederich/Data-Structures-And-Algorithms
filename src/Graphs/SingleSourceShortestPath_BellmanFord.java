@@ -1,35 +1,22 @@
 package Graphs;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SingleSourceShortestPath_BellmanFord {
     public static void bellmanFord(int[][] graph, int source, int v){
         int[] distance = new int[v];
-        int[] predecessor = new int[v];
-        for(int x = 0; x < v; x++){
-            distance[x] = Integer.MAX_VALUE;
-            predecessor[x] = -1;
-        }
+        Arrays.fill(distance, Integer.MAX_VALUE);
         distance[source] = 0;
         for(int x = 0; x < v - 1; x++){
             for(int[] edge : graph){
-                int start = edge[0];
-                int destination = edge[1];
-                int weight = edge[2];
-                if(distance[start] + weight < distance[destination]){
-                    distance[destination] = distance[start] + weight;
+                if(distance[edge[0]] + edge[2] < distance[edge[1]]){
+                    distance[edge[1]] = distance[edge[0]] + edge[2];
                 }
             }
         }
 
         for(int[] edge : graph){
-            int start = edge[0];
-            int destination = edge[1];
-            int weight = edge[2];
-            if(distance[start] + weight < distance[destination]){
+            if(distance[edge[0]] + edge[2] < distance[edge[1]]){
                 System.out.println("Negative weight cycle detected");
             }
         }
