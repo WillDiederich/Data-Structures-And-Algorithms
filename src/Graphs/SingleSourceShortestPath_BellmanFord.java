@@ -17,7 +17,7 @@ public class SingleSourceShortestPath_BellmanFord {
 
         for(int[] edge : graph){
             if(distance[edge[0]] + edge[2] < distance[edge[1]]){
-                System.out.println("Negative weight cycle detected");
+                System.out.println("Negative weight cycle detected.");
             }
         }
     }
