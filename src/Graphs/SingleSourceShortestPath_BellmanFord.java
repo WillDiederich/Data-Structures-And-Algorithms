@@ -7,6 +7,7 @@ public class SingleSourceShortestPath_BellmanFord {
         int[] distance = new int[v];
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[source] = 0;
+        // Relax every edge in the graph v - 1 times
         for(int x = 0; x < v - 1; x++){
             for(int[] edge : graph){
                 if(distance[edge[0]] + edge[2] < distance[edge[1]]){
@@ -15,6 +16,8 @@ public class SingleSourceShortestPath_BellmanFord {
             }
         }
 
+        // The above guarantees the single source shortest path for all vertices
+        // If there exists a shorter path, that means there's a negative cycle
         for(int[] edge : graph){
             if(distance[edge[0]] + edge[2] < distance[edge[1]]){
                 System.out.println("Negative weight cycle detected.");
