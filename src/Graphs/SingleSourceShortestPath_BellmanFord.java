@@ -21,7 +21,12 @@ public class SingleSourceShortestPath_BellmanFord {
         for(int[] edge : graph){
             if(distance[edge[0]] + edge[2] < distance[edge[1]]){
                 System.out.println("Negative weight cycle detected.");
+                return;
             }
+        }
+
+        for(int x = 0; x < v; x++){
+            System.out.println("Distance from vertex '" + source + "' to vertex '" + x + "': " + distance[x]);
         }
     }
 
@@ -38,18 +43,16 @@ public class SingleSourceShortestPath_BellmanFord {
 
     public static void main(String[] args) {
         int[][] graph = new int[][] {
-//                {0,1,4}, {0,7,8},
-//                {1,0,4}, {1,2,8}, {1,7,11},
-//                {2,1,8}, {2,8,2}, {2,5,4}, {2,3,7},
-//                {3,2,7}, {3,4,9}, {3,5,14},
-//                {4,3,9}, {4,5,10},
-//                {5,4,10}, {5,3,14}, {5,2,4}, {5,6,2},
-//                {6,5,2}, {6,8,6}, {6,7,1},
-//                {7,0,8}, {7,1,11}, {7,8,7}, {7,6,1},
-//                {8,7,7}, {8,6,6},
-                        {0,1,-5},
-                        {1,2,1},
-                        {2,0,1}
+                {0,1,4}, {0,7,8},
+                {1,0,4}, {1,2,8}, {1,7,11},
+                {2,1,8}, {2,8,2}, {2,5,4}, {2,3,7},
+                {3,2,7}, {3,4,9}, {3,5,14},
+                {4,3,9}, {4,5,10},
+                {5,4,10}, {5,3,14}, {5,2,4}, {5,6,2},
+                {6,5,2}, {6,8,6}, {6,7,1},
+                {7,0,8}, {7,1,11}, {7,8,7}, {7,6,1},
+                {8,7,7}, {8,6,6},
+
         };
 
         bellmanFord(graph, 0, 9);
