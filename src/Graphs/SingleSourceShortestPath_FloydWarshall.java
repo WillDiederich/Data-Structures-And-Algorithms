@@ -5,12 +5,19 @@ import java.util.Arrays;
 public class SingleSourceShortestPath_FloydWarshall {
     public static void floydWarshall(int[][] graph, int v){
         int[][] distances = new int[v][v];
+        // Set every weight in the graph to 999999, signifying infinity
         for(int[] row : distances){
             Arrays.fill(row, 999999);
         }
+        // Set the weight for every edge in the distances graph
         for(int[] edge : graph){
-            distances[edge[0]][edge[1]] = edge[2];
+            int source = edge[0];
+            int destination = edge[1];
+            int weight = edge[2];
+            distances[source][destination] = weight;
         }
+        // For every vertex, set the weight of the edge that points to itself to zero
+        // Example: The weight of the edges (0 -> 0), ..., (n -> n) will be zero.
         for(int x = 0; x < v; x++){
             distances[x][x] = 0;
         }
